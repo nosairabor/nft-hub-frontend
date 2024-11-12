@@ -1,115 +1,106 @@
 import Image from "next/image";
 import localFont from "next/font/local";
+import DesktopNavbar from "@/components/desktopNavbar";
+import { GoArrowUpRight } from "react-icons/go";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
+const inter = localFont ({
+  src: './fonts/Inter-Medium.otf'
+})
+
+const brands = [
+  {
+      id: 1,
+      src: '/images/brands/metamask.svg'
+  },
+  {
+      id: 2,
+      src: '/images/brands/bitgo.svg'
+  },
+  {
+      id: 3,
+      src: '/images/brands/coinbase.svg'
+  },
+  {
+      id: 4,
+      src: '/images/brands/trustwallet.svg'
+  },
+  {
+    id: 5,
+    src: '/images/brands/exodus.svg'
+},
+];
 
 export default function Home() {
   return (
     <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
+      className={`flex flex-col  `}
     >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/pages/index.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="xl:px-[250px] 2xl:px-[320px] bg-hero bg-cover bg-no-repeat h-auto lg:h-screen w-screen space-y-[30px]">
+          <DesktopNavbar/>
+          <div className="flex justify-between pt-[140px]">
+            <div className="space-y-8">
+              <div className="text-5xl font-bold">
+                <p className="">High Quality</p>
+                <p className="">NFT Collection</p>
+              </div>
+              <p className="text-[#7B7583]">A 890 piece custom Nfthub's collection is<br/> joining the NFT space on Opensea.</p>
+              <div className="linearGradient w-[200px] text-sm py-4 px-2 flex justify-center items-center gap-x-1 rounded-[30px] text-white font-bold">
+                <p>View in OPENSEA</p> 
+                <GoArrowUpRight className="text-xl"/>
+              </div>
+              <div className="flex items-center">
+                <div className="">
+                  <Image
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    src='/images/avatarList.svg'
+                    alt=""
+                    className="w-[95px] h-[47px]"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-2xl font-bold">47k+</p>
+                  <p className="text-xs text-[#7B7583] ">Community members</p>
+                </div>
+                
+                
+              </div>
+            </div>
+            <div className="-translate-y-[110px]">
+              <Image
+                width={0}
+                height={0}
+                sizes="100vw"
+                src='/images/hero-illustration.svg'
+                alt=""
+                className="h-[500px] w-auto"
+              />
+            </div>
+          </div>
+          <div className=""></div>
+          <div className="flex justify-center items-center gap-x-8">
+            {brands.map((items) => (
+                <div className="" key={items.id}>
+                  <Image
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    src={items.src}
+                    alt=""
+                    className="h-[27px] w-auto"
+                  />
+                </div>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      
     </div>
   );
 }
