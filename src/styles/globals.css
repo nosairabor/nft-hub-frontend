@@ -10,3 +10,20 @@
     background: linear-gradient(to right, #2600FC, #FF00EA);
 
 }
+.linearGradientText {
+    background: linear-gradient(to right, #2600FC, #FF00EA); /* Apply gradient */
+    -webkit-background-clip: text; /* Apply the background clip to text */
+    color: transparent; /* Make the text color transparent to show the gradient */
+}
+/* from top to bottom linear gradient */
+.TBlinearGradientText {
+    background: linear-gradient(to bottom, #2600FC, #FF00EA); /* Gradient from top to bottom */
+    -webkit-background-clip: text; /* Apply the background clip to text */
+    color: transparent; /* Make the text color transparent to show the gradient */
+}
+
+
+.choose-us:nth-child(even) {
+    margin-top: 30px;
+}
+
