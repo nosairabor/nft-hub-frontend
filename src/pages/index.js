@@ -8,6 +8,7 @@ import "react-multi-carousel/lib/styles.css";
 import CarouselField from "@/components/carousel";
 import { artists, faqInfo, HowItWorks } from "@/data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/accordion";
+import Link from "next/link";
 
 
 const geistSans = localFont({
@@ -103,49 +104,52 @@ export default function Home() {
     >
       
       {/* hero section */}
-        <div className="relative xl:px-[250px] 2xl:px-[320px] bg-hero bg-cover bg-no-repeat h-auto lg:h-screen w-screen space-y-[60px] 2xl:space-y-[110px]">
+        <div className="relative xl:px-[250px] 2xl:px-[320px]   bg-hero bg-cover bg-no-repeat h-auto lg:h-screen w-screen space-y-[60px] 2xl:space-y-[110px]">
           <DesktopNavbar/>
-          <div className="flex justify-between pt-[140px]">
-            <div className="space-y-8">
-              <div className="leading-[1.0] text-[56px] font-bold">
-                <p className="">High Quality</p>
-                <p className="">NFT Collection</p>
-              </div>
-              <p className="text-[#7B7583] text-[17px]">A 890 piece custom Nfthub's collection is<br/> joining the NFT space on Opensea.</p>
-              <div className="linearGradient cursor-pointer w-[200px] text-sm py-4 px-2 flex justify-center items-center gap-x-1 rounded-[30px] text-white font-bold">
-                <p>View in OPENSEA</p> 
-                <GoArrowUpRight className="text-xl"/>
-              </div>
-              <div className="flex items-center">
-                <div className="">
-                  <Image
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    src='/images/avatarList.svg'
-                    alt=""
-                    className="w-[95px] h-[47px]"
-                  />
+          <div className="flex justify-center ">
+            <div className="flex justify-between 2xl:max-w-[980px] pt-[140px] w-full">
+              <div className="space-y-8">
+                <div className="leading-[1.0] text-[56px] font-bold">
+                  <p className="">High Quality</p>
+                  <p className="">NFT Collection</p>
                 </div>
-                <div className="flex flex-col">
-                  <p className="text-2xl font-bold">47k+</p>
-                  <p className="text-xs text-[#7B7583] ">Community members</p>
+                <p className="text-[#7B7583] text-[17px]">A 890 piece custom Nfthub's collection is<br/> joining the NFT space on Opensea.</p>
+                <div className="linearGradient cursor-pointer w-[200px] text-sm py-4 px-2 flex justify-center items-center gap-x-1 rounded-[30px] text-white font-bold">
+                  <p>View in OPENSEA</p> 
+                  <GoArrowUpRight className="text-xl"/>
                 </div>
-                
-                
+                <div className="flex items-center">
+                  <div className="">
+                    <Image
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      src='/images/avatarList.svg'
+                      alt=""
+                      className="w-[95px] h-[47px]"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-2xl font-bold">47k+</p>
+                    <p className="text-xs text-[#7B7583] ">Community members</p>
+                  </div>
+                  
+                  
+                </div>
               </div>
-            </div>
-            <div className="-translate-y-[65px]">
-              <Image
-                width={0}
-                height={0}
-                sizes="100vw"
-                src='/images/hero-illustration.svg'
-                alt=""
-                className="h-[500px] w-auto"
-              />
+              <div className="-translate-y-[65px]">
+                <Image
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  src='/images/hero-illustration.svg'
+                  alt=""
+                  className="h-[500px] w-auto"
+                />
+              </div>
             </div>
           </div>
+          
           <div className="absolute flex justify-end right-0 bottom-0">
             <Image
               width={0}
@@ -457,7 +461,7 @@ export default function Home() {
         {/* meet the artists */}
         <div className="relative xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[70px]">
           <p className="text-5xl font-bold tracking-wide">Meet <span className="linearGradientText">the artists</span></p>
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-full 2xl:max-w-[980px]">
             {artists.map((item) => (
               <div className={`${item.id % 2 === 0 ? '-translate-y-7' : ''}`} key={item.id}>
                 <div className="flex flex-col ">
@@ -561,7 +565,7 @@ export default function Home() {
         </div>
         
         {/* let's start minting */}
-        <div className="relative bg-minting bg-cover border-b bg-no-repeat h-[300px] xl:h-[470px] w-screen flex flex-col justify-center items-center gap-y-5 -mt-12">
+        <div className="relative bg-minting bg-cover border-b bg-no-repeat h-[300px] xl:h-[470px]  w-screen flex flex-col justify-center items-center gap-y-5 -mt-12">
           {/* small icons */}
           <div className="absolute left-[180px] top-[80px] xl:px-[250px] 2xl:px-[320px]">
             <Image
@@ -616,8 +620,78 @@ export default function Home() {
         </div>
 
         {/* footer */}
-        <div className="">
+        <div className="xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[50px] pb-8 -mt-8">
+          <div className="flex justify-between items-center 2xl:max-w-[980px] w-full pr-12">
+            <div className="flex flex-col gap-y-4">
+              <div className="">
+                <Image
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  src='/images/footer-logo.svg'
+                  alt=""
+                  className="w-[110px] h-[35px]"
+                />
+              </div>
+              <div className="">
+                <p className="text-secondary text-sm w-[300px]">Join our Discord channel or follow us on Twitter to keep up to date with our latest work and announcements.</p>
+                <div className="flex pt-5 gap-x-3 items-center">
+                  <div className="">
+                    <Image
+                      width={0} height={0} sizes="100vw" src='/icons/socials/x.svg' alt="" className="h-[15px] w-auto"
+                    />
+                  </div>
+                  <div className="">
+                    <Image
+                      width={0}  height={0} sizes="100vw" src='/icons/socials/discord.svg' alt="" className="h-[15px] w-auto"
+                    />
+                  </div>
+                  <div className="">
+                    <Image
+                      width={0} height={0}  sizes="100vw" src='/icons/socials/instagram.svg' alt="" className="h-[14px] w-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-x-[90px]">
+              <div className="flex flex-col">
+                <p className="font-bold">Quick Link</p>
+                <div className="pt-4 text-secondary text-sm space-y-3">
+                  <p><Link href="">About</Link></p>
+                  <p><Link href="">Collection</Link></p>
+                  <p><Link href="">Roadmap</Link></p>
+                  <p><Link href="">FAQs</Link></p>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <p className="font-bold">Community</p>
+                <div className="pt-4 text-secondary text-sm space-y-3">
+                  <p><Link href="">How it works!</Link></p>
+                  <p><Link href="">Blockchain</Link></p>
+                  <p><Link href="">Get in touch</Link></p>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <div className="flex justify-between items-center w-full">
+              <p className="text-xs text-secondary">Copyright © 2023 Nfthub All Rights Reserved.</p>
+              <div className="flex gap-x-12 text-xs text-secondary">
+                <p>Privacy policy</p>
+                <div className="flex gap-x-6 items-center">
+                  <p>Terms of use</p>
+                  <div className="">
+                    <Image
+                      width={0} height={0} sizes="100vw" src='/icons/arrow-up.svg' alt="" className="h-[7px] w-auto"
+                    />
+                  </div>
+                   
+                </div>
+               
+              </div>
+          </div>
+          
         </div>
         
     </div>

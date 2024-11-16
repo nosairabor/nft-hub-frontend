@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       colors: {
         "black":"#0F051D",
-        "white":"#FFFFFF"
+        "white":"#FFFFFF",
+        "secondary":"#7B7583",
       },
       backgroundImage:{
         "hero":"url('/images/hero-background.svg')",
