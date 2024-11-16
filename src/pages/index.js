@@ -6,7 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CarouselField from "@/components/carousel";
-import { HowItWorks } from "@/data";
+import { artists, faqInfo, HowItWorks } from "@/data";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/accordion";
 
 
 const geistSans = localFont({
@@ -18,6 +19,7 @@ const geistSans = localFont({
 const inter = localFont ({
   src: './fonts/Inter-Medium.otf'
 })
+
 
 
 const brands = [
@@ -88,6 +90,8 @@ export default function Home() {
     return () => window.removeEventListener("resize", handleResize);
 
   }, [])
+
+  
 
   const options = isMobile
     ? { damping: 0, alwaysShowTracks: false } // No dampness for mobile
@@ -401,13 +405,13 @@ export default function Home() {
               className="h-[20px] w-auto"
             />
           </div>
-          <div className="w-full border rounded-[20px] flex flex-col items-center pt-8 pb-12">
-            <p className="text-[52px] font-bold tracking-wide">Never <span className="linearGradientText">miss a drop!</span></p>
-            <p className="text-[#7B7583] text-sm pt-2">Subscribe to our super-rare and exclusive drops & collectibles.</p>
+          <div className="w-full border rounded-[20px] flex flex-col items-center pt-10 pb-12">
+            <p className="text-5xl font-bold tracking-wide">Never <span className="linearGradientText">miss a drop!</span></p>
+            <p className="text-[#7B7583] text-sm pt-6">Subscribe to our super-rare and exclusive drops & collectibles.</p>
             <div className="flex gap-x-2 pt-8">
               <input
                 type="text"
-                className="w-[300px] bg-[#f2f2f1] px-4 py-[10px] rounded-[50px] text-sm  text-[#7B7583]"
+                className="w-[280px] bg-[#f2f2f1] px-4 py-[10px] rounded-[50px] text-sm  text-[#7B7583]"
                 placeholder="Enter your email"
               />
               <div className=""></div>
@@ -451,9 +455,171 @@ export default function Home() {
         </div>
         
         {/* meet the artists */}
-        <div className="">
+        <div className="relative xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[70px]">
+          <p className="text-5xl font-bold tracking-wide">Meet <span className="linearGradientText">the artists</span></p>
+          <div className="flex justify-between w-full">
+            {artists.map((item) => (
+              <div className={`${item.id % 2 === 0 ? '-translate-y-7' : ''}`} key={item.id}>
+                <div className="flex flex-col ">
+                  <Image
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    src={item.imageSrc}
+                    alt=""
+                    className="h-[120px] w-auto"
+                  />
+                </div>
+                <div className="flex flex-col items-center gap-y-[2px]">
+                  <p className="text-black font-bold pt-3">{item.name}</p>
+                  <p className="text-[#7B7583] text-[13px]">{item.occupation}</p>
+                </div>
+                <div className="flex pt-4 gap-x-3 justify-center items-center">
+                  <div className="">
+                    <Image
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      src='/icons/socials/x.svg'
+                      alt=""
+                      className="h-[11px] w-auto"
+                    />
+                  </div>
+                  <div className="">
+                    <Image
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      src='/icons/socials/discord.svg'
+                      alt=""
+                      className="h-[11px] w-auto"
+                    />
+                  </div>
+                  <div className="">
+                    <Image
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      src='/icons/socials/instagram.svg'
+                      alt=""
+                      className="h-[11px] w-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
           
         </div>
+        
+        {/* seperator 7 */}
+        <div className="relative flex justify-center">
+          <Image
+            width={0}
+            height={0}
+            sizes="100vw"
+            src='/images/div-seperator.svg'
+            alt=""
+            className="h-[20px] w-auto"
+          />
+        </div>
+        
+        {/* Accordion */}
+        <div className="-mt-5 xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[50px]">
+          <div className="text-5xl font-bold tracking-wide flex flex-col items-center">
+            <p className="flex">Your questions,</p>
+            <p className="linearGradientText">answered!</p>
+          </div>
+          <div className="">
+            <Accordion type="single" collapsible className="bg-white border rounded-lg px-5 lg:w-[500px]">
+              {faqInfo.map((item) => (
+                <AccordionItem key={item.id} value={item.id} className={`${item.id === faqInfo.length  ? "border-0" : ""}`}>
+                  <AccordionTrigger className="text-black font-bold">
+                    {item.heading}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-white space-y-3 bg-white text-[#7B7583]">
+                    <p className="">{item.text1}</p>
+                    <p className="">{item.text2}</p>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+
+        </div>
+
+        {/* seperator 8 */}
+        <div className="relative flex justify-center">
+          <Image
+            width={0}
+            height={0}
+            sizes="100vw"
+            src='/images/div-seperator.svg'
+            alt=""
+            className="h-[20px] w-auto"
+          />
+        </div>
+        
+        {/* let's start minting */}
+        <div className="relative bg-minting bg-cover border-b bg-no-repeat h-[300px] xl:h-[470px] w-screen flex flex-col justify-center items-center gap-y-5 -mt-12">
+          {/* small icons */}
+          <div className="absolute left-[180px] top-[80px] xl:px-[250px] 2xl:px-[320px]">
+            <Image
+              width={0}
+              height={0}
+              sizes="100vw"
+              src='/images/circle-01.svg'
+              alt=""
+              className="h-[20px] w-auto"
+            />
+          </div>
+          <div className="absolute right-[180px] top-[80px] xl:px-[250px] 2xl:px-[320px]">
+            <Image
+              width={0}
+              height={0}
+              sizes="100vw"
+              src='/images/ethereum-03.svg'
+              alt=""
+              className="h-[30px] w-auto"
+            />
+          </div>
+          <div className="text-7xl font-bold tracking-wide flex flex-col items-center ">
+            <p className="">Let's start</p>
+            <p className="z-10 linearGradientText pb-1">minting</p>
+          </div>
+          <p className="text-[#7B7583] ">Invest and manage all your NFTs at one place.</p>
+          <div className="linearGradient mt-4 cursor-pointer w-[180px] text-sm py-4 px-2 flex justify-center items-center gap-x-1 rounded-[30px] text-white font-bold">
+            <p>Get started</p> 
+            <GoArrowUpRight className="text-xl"/>
+          </div>
+          {/* small icons */}
+          <div className="absolute left-[200px] bottom-[130px] xl:px-[250px] 2xl:px-[320px]">
+            <Image
+              width={0}
+              height={0}
+              sizes="100vw"
+              src='/images/bitcoin-01.svg'
+              alt=""
+              className="h-[40px] w-auto"
+            />
+          </div>
+          <div className="absolute right-[200px] bottom-[130px]  xl:px-[250px] 2xl:px-[320px]">
+            <Image
+              width={0}
+              height={0}
+              sizes="100vw"
+              src='/images/x.svg'
+              alt=""
+              className="h-[20px] w-auto"
+            />
+          </div>
+        </div>
+
+        {/* footer */}
+        <div className="">
+
+        </div>
+        
     </div>
   );
 }
