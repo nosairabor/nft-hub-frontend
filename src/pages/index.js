@@ -675,7 +675,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex justify-between items-center w-full">
+          <div className="flex justify-between items-center 2xl:max-w-[980px] w-full">
               <p className="text-xs text-secondary">Copyright © 2023 Nfthub All Rights Reserved.</p>
               <div className="flex gap-x-12 text-xs text-secondary">
                 <p>Privacy policy</p>
