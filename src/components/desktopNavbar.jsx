@@ -72,7 +72,7 @@ const DesktopNavbar = () => {
                         className="w-[110px] h-[35px]"
                     />
                 </div>
-                <div className="ml-[85px] font-bold flex gap-x-7 text-[15px]">
+                <div className="ml-[85px] font-bold flex gap-x-7 text-[15px] smallLaptopNavMargin">
                     {links.map((items) => (
                         <div className="" key={items.id}>
                             <Link href={items.link}>{items.text}</Link>

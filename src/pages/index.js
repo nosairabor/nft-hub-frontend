@@ -109,7 +109,7 @@ export default function Home() {
           <div className="flex justify-center ">
             <div className="flex justify-between 2xl:max-w-[980px] pt-[140px] w-full">
               <div className="space-y-8">
-                <div className="leading-[1.0] text-[56px] font-bold">
+                <div className="leading-[1.0] text-[56px] smallLaptopScreenText font-bold">
                   <p className="">High Quality</p>
                   <p className="">NFT Collection</p>
                 </div>
@@ -126,7 +126,7 @@ export default function Home() {
                       sizes="100vw"
                       src='/images/avatarList.svg'
                       alt=""
-                      className="w-[95px] h-[47px]"
+                      className="w-[95px] h-[47px] "
                     />
                   </div>
                   <div className="flex flex-col">
@@ -144,7 +144,7 @@ export default function Home() {
                   sizes="100vw"
                   src='/images/hero-illustration.svg'
                   alt=""
-                  className="h-[500px] w-auto"
+                  className="h-[480px] w-auto smallLaptopScreenImage"
                 />
               </div>
             </div>
@@ -675,7 +675,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex justify-between items-center 2xl:max-w-[980px] w-full">
+          <div className="flex justify-between items-center w-full">
               <p className="text-xs text-secondary">Copyright © 2023 Nfthub All Rights Reserved.</p>
               <div className="flex gap-x-12 text-xs text-secondary">
                 <p>Privacy policy</p>

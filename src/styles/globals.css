@@ -27,3 +27,14 @@
     margin-top: 30px;
 }
 
+@media (min-width: 1280px) and (max-width: 1350px) {
+    .smallLaptopScreenText {
+      font-size: 48px;
+    }
+    .smallLaptopScreenImage {
+        height: 370px
+    }
+    .smallLaptopNavMargin {
+        margin-left: 0px;
+    }
+}
