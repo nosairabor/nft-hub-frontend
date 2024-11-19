@@ -10,6 +10,10 @@ import { artists, faqInfo, HowItWorks } from "@/data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/accordion";
 import Link from "next/link";
 import MobileNavbar from "@/components/mobileNavabr";
+import Aos from "aos";
+import 'aos/dist/aos.css'
+import Footer from "@/components/footer";
+import LoadingScreen from "@/components/loadingScreen";
 
 
 const geistSans = localFont({
@@ -21,6 +25,7 @@ const geistSans = localFont({
 const inter = localFont ({
   src: './fonts/Inter-Medium.otf'
 })
+
 
 
 
@@ -80,7 +85,19 @@ const chooseUs = [
 ]
 
 export default function Home() {
+
   const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(()=>{
+    Aos.init({
+        duration: 800, // Animation duration
+  
+        once: false,    
+    })
+  }, [])
+
+
+  
 
   useEffect (() => {
     const handleResize = () => {
@@ -92,6 +109,17 @@ export default function Home() {
     return () => window.removeEventListener("resize", handleResize);
 
   }, [])
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2500)
+    return () => clearTimeout(timer); // Clear the timer on component unmount
+  }, [])
+
+  if (loading) return <LoadingScreen/>
 
   
 
@@ -105,11 +133,11 @@ export default function Home() {
     >
       
       {/* hero section */}
-        <div className="relative md:px-[100px] xl:px-[250px] 2xl:px-[320px] bg-hero-mobile  md:bg-hero bg-cover bg-no-repeat  xl:h-screen w-screen space-y-[60px] 2xl:space-y-[110px]">
+        <div className="relative md:px-[100px] xl:px-[250px] 2xl:px-[320px] bg-hero-mobile  md:bg-hero bg-cover bg-no-repeat  xl:h-screen w-screen  2xl:space-y-[110px]">
           <MobileNavbar/>
           <DesktopNavbar/>
           
-          <div className="flex justify-center ">
+          <div className="pt-[80px] xl:pt-[40px] flex justify-center ">
             <div className="flex flex-col items-center xl:items-start md:flex-row md:justify-between 2xl:max-w-[980px] xl:pt-[140px] w-full">
               <div className="space-y-8">
                 <div className="leading-[1.0] text-[38px] md:text-[34px] xl:text-[56px] smallLaptopScreenText font-bold">
@@ -144,14 +172,14 @@ export default function Home() {
                   
                 </div>
               </div>
-              <div className="py-10 xl:py-0 xl:-translate-y-[65px]">
+              <div className="py-10 xl:py-0 md:-translate-y-[50px] xl:-translate-y-[65px]">
                 <Image
                   width={0}
                   height={0}
                   sizes="100vw"
                   src='/images/hero-illustration.svg'
                   alt=""
-                  className="xl:h-[480px] h-[300px] w-auto smallLaptopScreenImage"
+                  className="xl:h-[480px] lg:h-[320px] h-[280px] w-auto smallLaptopScreenImage"
                 />
               </div>
             </div>
@@ -171,7 +199,7 @@ export default function Home() {
         </div>
 
         {/* brands */}
-        <div className="hidden xl:flex justify-center items-center gap-x-8 xl:-mt-[60px]">
+        <div data-aos="fade-right" className="hidden md:flex justify-center items-center gap-x-8 xl:-mt-[60px]">
           {brands.map((items) => (
               <div className="" key={items.id}>
                 <Image
@@ -180,14 +208,14 @@ export default function Home() {
                   sizes="100vw"
                   src={items.src}
                   alt=""
-                  className="h-[27px] w-auto"
+                  className="md:h-[20px] lg:h-[27px] w-auto"
                 />
               </div>
           ))}
         </div>
 
         {/* mobile brands */}
-        <div className="flex xl:hidden justify-center pl-5">
+        <div data-aos="fade-right" className="flex md:hidden justify-center pl-5">
           <div className="grid grid-cols-2 justify-center items-center gap-y-5 gap-x-8 xl:-mt-[60px]">
             {brands.map((items) => (
                 <div className={`${items.id === brands.length ? "col-span-2 justify-self-center pt-2 -ml-3" :""}`} key={items.id}>
@@ -252,9 +280,9 @@ export default function Home() {
               className="h-[15px] w-auto"
             />
           </div>
-          <div className="flex xl:flex-row flex-col gap-x-6 choose-us gap-y-9 xl:gap-y-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-6 choose-us gap-y-9 xl:gap-y-0">
             {chooseUs.map((item) => (
-              <div className={`${item.id % 2 === 0 ? 'lg:mt-8': 'mt-0'} flex flex-col justify-center border-[1px] px-5 gap-y-4 h-[270px] max-w-[300px] xl:w-[205px] rounded-[20px]`} key={item.id}>
+              <div data-aos="zoom-in" className={`${item.id % 2 === 0 ? 'lg:mt-8': 'mt-0'} flex flex-col justify-center border-[1px] px-5 gap-y-4 h-[270px] max-w-[300px] xl:w-[205px] rounded-[20px]`} key={item.id}>
                 <div className="">
                   <Image
                     width={0}
@@ -307,7 +335,7 @@ export default function Home() {
         </div>
 
         {/* figures */}
-        <div className="relative flex flex-col lg:flex-row items-center justify-center gap-x-10 gap-y-10  xl:px-[250px] 2xl:px-[320px]">
+        <div className="relative flex flex-col md:flex-row items-center justify-center gap-x-10 gap-y-10  xl:px-[250px] 2xl:px-[320px]">
             <div className="absolute -top-6 right-[220px] xl:px-[250px] 2xl:px-[320px]">
               <Image
                 width={0}
@@ -318,29 +346,29 @@ export default function Home() {
                 className="h-[15px] lg:h-[20px] w-auto"
               />
             </div>
-            <div className="space-y-5 flex flex-col items-center justify-center">
-              <p className="text-[#0F051D] font-bold text-6xl">400k+</p>
+            <div data-aos="flip-left" className="space-y-5 flex flex-col items-center justify-center">
+              <p className="text-[#0F051D] font-bold text-5xl xl:text-6xl">400k+</p>
+              <p className="text-[#7B7583] text-sm">Wallets Connected</p>
+            </div>
+
+            <div  className="hidden lg:block w-[1px] h-[80px] bg-[#e5e7eb]"></div>
+
+            <div data-aos="flip-right" className="space-y-4 flex flex-col items-center justify-center" >
+              <p className="text-[#0F051D] font-bold text-5xl xl:text-6xll">20k+</p>
               <p className="text-[#7B7583] text-sm">Wallets Connected</p>
             </div>
 
             <div className="hidden lg:block w-[1px] h-[80px] bg-[#e5e7eb]"></div>
 
-            <div className="space-y-4 flex flex-col items-center justify-center" >
-              <p className="text-[#0F051D] font-bold text-6xl">20k+</p>
-              <p className="text-[#7B7583] text-sm">Wallets Connected</p>
-            </div>
-
-            <div className="hidden lg:block w-[1px] h-[80px] bg-[#e5e7eb]"></div>
-
-            <div className="space-y-4 flex flex-col items-center justify-center">
-              <p className="text-[#0F051D] font-bold text-6xl">230+</p>
+            <div data-aos="flip-right" className="space-y-4 flex flex-col items-center justify-center">
+              <p className="text-[#0F051D] font-bold text-5xl xl:text-6xl">230+</p>
               <p className="text-[#7B7583] text-sm">Creative artists</p>
             </div>
 
             <div className="hidden lg:block w-[1px] h-[80px] bg-[#e5e7eb]"></div>
 
-            <div className="space-y-4 flex flex-col items-center justify-center">
-              <p className="text-[#0F051D] font-bold text-6xl">2.5x</p>
+            <div data-aos="flip-left" className="space-y-4 flex flex-col items-center justify-center">
+              <p className="text-[#0F051D] font-bold text-5xl xl:text-6xl">2.5x</p>
               <p className="text-[#7B7583] text-sm">Estimated value</p>
             </div>
 
@@ -369,11 +397,12 @@ export default function Home() {
         </div>
 
         {/* How it works */}
-        <div className="relative xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[70px]">
-          <p className="text-5xl font-bold">How it <span className="linearGradientText">works!</span></p>
+        <div  className="relative md:px-[80px] xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[70px]">
+          <p className="text-4xl md:text-5xl font-bold">How it <span className="linearGradientText">works!</span></p>
           <div className="flex flex-col gap-y-[70px] lg:gap-y-[100px]">
             {HowItWorks.map((item) => (
-              <div className={`flex xl:flex-row flex-col justify-center items-center xl:items-start xl:justify-between ${item.id % 2 === 0 ? 'flex-row-reverse' : ''}`} key={item.id}>
+              <div data-aos="fade-up" data-aos-duration="2000"
+              data-aos-anchor-placement="top-bottom" className={`flex md:flex-row flex-col justify-center items-center md:items-start md:justify-between ${item.id % 2 === 0 ? 'md:flex-row-reverse' : ''}`} key={item.id}>
                 <div className="">
                   <Image
                     width={0}
@@ -381,13 +410,13 @@ export default function Home() {
                     sizes="100vw"
                     src={item.imageSrc}
                     alt=""
-                    className="h-[300px] xl:h-[400px] w-auto"
+                    className="h-[200px] md:h-[300px] xl:h-[400px] w-auto"
                   />
                 </div>
-                <div className="flex flex-col pt-6 items-center xl:items-start">
+                <div className="flex flex-col pt-6 items-center md:items-start">
                   <p className="TBlinearGradientText text-[15px] font-bold">0{item.id}.</p>
-                  <p className="text-[36px] xl:text-[44px] font-bold w-[250px] xl:w-[350px] text-center xl:text-start leading-[1.05] mt-2">{item.heading}.</p>
-                  <div className="mt-5 text-[#7B7583] font-light px-2 text-center max-w-[340px] lg:text-start xl:w-[400px] text-[15px] space-y-3">
+                  <p className="text-[32px] xl:text-[44px] font-bold w-[250px] md:w-[300px] xl:w-[350px] text-center md:text-start leading-[1.05] mt-2">{item.heading}.</p>
+                  <div className="mt-5 text-[#7B7583] font-light px-2 md:px-0 text-center max-w-[340px] md:text-start md:w-[400px] text-[15px] space-y-3">
                     <p className="">{item.text1}</p>
                     <p className="">{item.text2}</p>
                   </div>
@@ -438,7 +467,7 @@ export default function Home() {
           <div className="w-full border rounded-[20px] flex flex-col items-center pt-10 pb-12">
             <p className="xl:text-5xl text-4xl text-center xl:text-start font-bold tracking-wide">Never <span className="linearGradientText">miss a<br className="block lg:hidden"/> drop!</span></p>
             <p className="text-[#7B7583] text-center lg:text-start xl:text-sm pt-6">Subscribe to our super-rare and<br className="block lg:hidden"/> exclusive drops & collectibles.</p>
-            <div className="flex lg:flex-row flex-col items-center gap-x-2 gap-y-4 pt-8">
+            <div className="flex md:flex-row flex-col items-center gap-x-2 gap-y-4 pt-8">
               <input
                 type="text"
                 className="w-[280px] bg-[#f2f2f1] px-4 py-[10px] rounded-[50px] text-sm  text-[#7B7583]"
@@ -485,11 +514,11 @@ export default function Home() {
         </div>
         
         {/* meet the artists */}
-        <div className="relative xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[40px] lg:gap-y-[70px]">
+        <div className="relative md:px-[100px] xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[40px] lg:gap-y-[70px]">
           <p className=" text-4xl lg:text-5xl font-bold tracking-wide">Meet <span className="linearGradientText">the artists</span></p>
-          <div className="grid grid-cols-2 gap-y-10 gap-x-5 w-full lg:grid-cols-4 2xl:max-w-[980px]">
+          <div  className="grid grid-cols-2 gap-y-10 gap-x-8 md:w-full md:grid-cols-4 2xl:max-w-[980px]">
             {artists.map((item) => (
-              <div className={`${item.id % 2 === 0 ? 'lg:-translate-y-7' : ''}`} key={item.id}>
+              <div data-aos="zoom-in" className={`${item.id % 2 === 0 ? 'md:-translate-y-7' : ''}`} key={item.id}>
                 <div className="flex flex-col ">
                   <Image
                     width={0}
@@ -504,7 +533,7 @@ export default function Home() {
                   <p className="text-black font-bold pt-3">{item.name}</p>
                   <p className="text-[#7B7583] text-[13px]">{item.occupation}</p>
                 </div>
-                <div className="flex pt-4 gap-x-3 justify-center items-center">
+                <div className="flex pt-2 md:pt-4 gap-x-2 md:gap-x-3 justify-center items-center">
                   <div className="">
                     <Image
                       width={0}
@@ -561,7 +590,7 @@ export default function Home() {
             <p className="linearGradientText">answered!</p>
           </div>
           <div className="">
-            <Accordion type="single" collapsible className="bg-white border rounded-lg px-5 max-w-[340px]  lg:min-w-[500px]">
+            <Accordion type="single" collapsible className="bg-white border rounded-lg px-5 max-w-[340px]  md:min-w-[500px]">
               {faqInfo.map((item) => (
                 <AccordionItem key={item.id} value={item.id} className={`${item.id === faqInfo.length  ? "border-0" : ""}`}>
                   <AccordionTrigger className="text-black font-bold">
@@ -646,79 +675,7 @@ export default function Home() {
         </div>
 
         {/* footer */}
-        <div className="xl:px-[250px] 2xl:px-[320px] px-5 flex flex-col items-center justify-center gap-y-[50px] pb-8 -mt-8">
-          <div className="flex flex-col lg:flex-row lg:justify-between gap-y-7 lg:items-center 2xl:max-w-[980px] w-full pr-12">
-            <div className="flex flex-col gap-y-4">
-              <div className="">
-                <Image
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  src='/images/footer-logo.svg'
-                  alt=""
-                  className="w-[110px] h-[35px]"
-                />
-              </div>
-              <div className="">
-                <p className="text-secondary text-sm w-[300px]">Join our Discord channel or follow us on Twitter to keep up to date with our latest work and announcements.</p>
-                <div className="flex pt-5 gap-x-3 items-center">
-                  <div className="">
-                    <Image
-                      width={0} height={0} sizes="100vw" src='/icons/socials/x.svg' alt="" className="h-[15px] w-auto"
-                    />
-                  </div>
-                  <div className="">
-                    <Image
-                      width={0}  height={0} sizes="100vw" src='/icons/socials/discord.svg' alt="" className="h-[15px] w-auto"
-                    />
-                  </div>
-                  <div className="">
-                    <Image
-                      width={0} height={0}  sizes="100vw" src='/icons/socials/instagram.svg' alt="" className="h-[14px] w-auto"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col lg:flex-row gap-y-4 lg:gap-x-[90px]">
-              <div className="flex flex-col">
-                <p className="font-bold">Quick Link</p>
-                <div className="pt-4 text-secondary text-sm space-y-3">
-                  <p><Link href="">About</Link></p>
-                  <p><Link href="">Collection</Link></p>
-                  <p><Link href="">Roadmap</Link></p>
-                  <p><Link href="">FAQs</Link></p>
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <p className="font-bold">Community</p>
-                <div className="pt-4 text-secondary text-sm space-y-3">
-                  <p><Link href="">How it works!</Link></p>
-                  <p><Link href="">Blockchain</Link></p>
-                  <p><Link href="">Get in touch</Link></p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex lg:flex-row flex-col gap-y-2 justify-between items-center w-full">
-              <p className="text-xs text-secondary">Copyright © 2023 Nfthub All Rights Reserved.</p>
-              <div className="flex gap-x-12 text-xs text-secondary">
-                <p>Privacy policy</p>
-                <div className="flex gap-x-6 items-center">
-                  <p>Terms of use</p>
-                  <div className="">
-                    <Image
-                      width={0} height={0} sizes="100vw" src='/icons/arrow-up.svg' alt="" className="h-[7px] w-auto"
-                    />
-                  </div>
-                   
-                </div>
-               
-              </div>
-          </div>
-          
-        </div>
+        <Footer/>
         
     </div>
   );

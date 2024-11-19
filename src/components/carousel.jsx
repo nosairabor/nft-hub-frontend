@@ -17,7 +17,7 @@ const CarouselField = () => {
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 2
+          items: 3
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
@@ -79,7 +79,7 @@ const CarouselField = () => {
     ]
 
     return (
-        <div className="flex justify-center w-full xl:w-[1000px]">
+        <div className="flex justify-center w-full md:w-[700px] xl:w-[1000px]">
             <Carousel responsive={responsive} className="pb-[60px] w-full" arrows={true} showDots={true} swipeable={true}  draggable={true} >
                 {imageCard.map((item)=> (
                     <div className="flex flex-col items-center" key={item.id}>
@@ -90,7 +90,7 @@ const CarouselField = () => {
                                 sizes="100vw"
                                 src={item.src}
                                 alt=""
-                                className="min-w-[320px] h-[360px] xl:h-[250px] xl:w-auto"
+                                className="min-w-[320px] h-[360px] md:h-[250px] md:w-auto"
                             />
                         </div>
                         <h3 className="text-2xl pt-3">{item.title}</h3>

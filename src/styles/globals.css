@@ -39,6 +39,21 @@
     }
 }
 
+/* zoom in zoom out animation for the loading screen before the home page  */
+.zoom-in-out-element {
+  animation: zoom-in-zoom-out 1s ease infinite;
+}
+@keyframes zoom-in-zoom-out {
+  0% {
+    scale: 100%;
+  }
+  50% {
+    scale: 150%;
+  }
+  100% {
+    scale: 100%;
+  }
+}
 
 /* @keyframes slideIn {
     from {
