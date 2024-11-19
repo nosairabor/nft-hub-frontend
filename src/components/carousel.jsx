@@ -90,7 +90,7 @@ const CarouselField = () => {
                                 sizes="100vw"
                                 src={item.src}
                                 alt=""
-                                className="min-w-[320px] xl:h-[250px] xl:w-auto"
+                                className="min-w-[320px] h-[360px] xl:h-[250px] xl:w-auto"
                             />
                         </div>
                         <h3 className="text-2xl pt-3">{item.title}</h3>

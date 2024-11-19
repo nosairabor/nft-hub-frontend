@@ -24,9 +24,11 @@ const socials = [
     }
 ];
 
+//the md:-mx-[100px ]is because of the padding:100px put in the main page 
+
 const SideBar = ({isOpen, setIsOpen}) => {
     return (
-        <div className={` ${isOpen ? ' translate-x-0  ' : ' -translate-x-full '} xl:hidden pt-5  w-screen transform transition-transform duration-500 z-50 fixed overflow-y-auto h-screen bg-white `}>
+        <div className={` ${isOpen ? ' translate-x-0  ' : ' -translate-x-full '} md:-mx-[100px] lg:px-0 lg:hidden pt-5  w-screen transform transition-transform duration-500 z-50 fixed overflow-y-auto h-screen bg-white `}>
             <div className="flex justify-between items-center px-6">
                 <h3 className="text-5xl font-bold">nerko</h3>
                 <TfiClose onClick={() => setIsOpen(false)} className="text-2xl text-[#741FF5] font-light"/>

@@ -105,27 +105,27 @@ export default function Home() {
     >
       
       {/* hero section */}
-        <div className="relative xl:px-[250px] 2xl:px-[320px] bg-hero-mobile  lg:bg-hero bg-cover bg-no-repeat  lg:h-screen w-screen space-y-[60px] 2xl:space-y-[110px]">
+        <div className="relative md:px-[100px] xl:px-[250px] 2xl:px-[320px] bg-hero-mobile  md:bg-hero bg-cover bg-no-repeat  xl:h-screen w-screen space-y-[60px] 2xl:space-y-[110px]">
           <MobileNavbar/>
           <DesktopNavbar/>
           
           <div className="flex justify-center ">
-            <div className="flex flex-col items-center xl:items-start xl:flex-row xl:justify-between 2xl:max-w-[980px] xl:pt-[140px] w-full">
+            <div className="flex flex-col items-center xl:items-start md:flex-row md:justify-between 2xl:max-w-[980px] xl:pt-[140px] w-full">
               <div className="space-y-8">
-                <div className="leading-[1.0] text-[38px] xl:text-[56px] smallLaptopScreenText font-bold">
-                  <p className="hidden xl:block">High Quality</p>
-                  <p className="xl:hidden text-center">High Quality NFT <br/>Collection</p>
-                  <p className="hidden xl:block">NFT Collection</p>
+                <div className="leading-[1.0] text-[38px] md:text-[34px] xl:text-[56px] smallLaptopScreenText font-bold">
+                  <p className="hidden md:block">High Quality</p>
+                  <p className="md:hidden text-center">High Quality NFT <br/>Collection</p>
+                  <p className="hidden md:block">NFT Collection</p>
                 </div>
-                <p className="text-[#7B7583] text-[17px] text-center xl:text-start">A 890 piece custom Nfthub's collection is<br/> joining the NFT space on Opensea.</p>
-                <div className="flex justify-center xl:justify-start">
-                <div className="linearGradient cursor-pointer w-[200px] text-sm py-4 px-2 flex justify-center items-center gap-x-1 rounded-[30px] text-white font-bold">
+                <p className="text-[#7B7583] text-[17px] md:text-sm xl:text-[17px] text-center md:text-start">A 890 piece custom Nfthub's collection is<br /> joining the NFT space on Opensea.</p>
+                <div className="flex justify-center md:justify-start">
+                <div className="linearGradient cursor-pointer w-[200px] text-sm py-3 px-2 flex justify-center items-center gap-x-1 rounded-[30px] text-white font-bold">
                   <p>View in OPENSEA</p> 
                   <GoArrowUpRight className="text-xl"/>
                 </div>
                 </div>
                 
-                <div className="flex items-center justify-center xl:justify-start">
+                <div className="flex items-center justify-center md:justify-start">
                   <div className="">
                     <Image
                       width={0}
@@ -240,9 +240,9 @@ export default function Home() {
         </div>
 
         {/* why choose us */}
-        <div className="relative xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center font-bold gap-y-[70px]">
+        <div className="relative xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center font-bold gap-y-[30px] lg:gap-y-[70px]">
           <p className=" text-4xl xl:text-5xl">Why <span className="linearGradientText">choose us?</span></p>
-          <div className="absolute left-[70px] top-[65px]  xl:px-[250px] 2xl:px-[320px]">
+          <div className="absolute hidden lg:block left-[70px] top-[65px]  xl:px-[250px] 2xl:px-[320px]">
             <Image
               width={0}
               height={0}
@@ -254,7 +254,7 @@ export default function Home() {
           </div>
           <div className="flex xl:flex-row flex-col gap-x-6 choose-us gap-y-9 xl:gap-y-0">
             {chooseUs.map((item) => (
-              <div className={`${item.id % 2 === 0 ? 'lg:mt-8': 'mt-0'} flex flex-col justify-center border-[1px] px-5 gap-y-4 h-[270px] max-w-[350px] xl:w-[205px] rounded-[20px]`} key={item.id}>
+              <div className={`${item.id % 2 === 0 ? 'lg:mt-8': 'mt-0'} flex flex-col justify-center border-[1px] px-5 gap-y-4 h-[270px] max-w-[300px] xl:w-[205px] rounded-[20px]`} key={item.id}>
                 <div className="">
                   <Image
                     width={0}
@@ -262,7 +262,7 @@ export default function Home() {
                     sizes="100vw"
                     src={item.src}
                     alt=""
-                    className="h-[35px] w-auto"
+                    className="lg:h-[35px] w-auto"
                   />
                 </div>
                 <h3 className="text-xl text-[#0F051D] leading-tight">{item.title1}<br/> {item.title2}</h3>
@@ -271,24 +271,24 @@ export default function Home() {
              </div>
             ))}
           </div>
-          <div className="absolute left-0 bottom-[20px] xl:px-[200px] 2xl:px-[290px]">
+          <div className="absolute left-3 lg:left-0 bottom-[20px] xl:px-[200px] 2xl:px-[290px]">
             <Image
                 width={0}
                 height={0}
                 sizes="100vw"
                 src='/images/x.svg'
                 alt=""
-                className="h-[20px] w-auto"
+                className="h-[15px] lg:h-[20px] w-auto"
               />
           </div>
-          <div className="absolute right-0 bottom-[20px] xl:px-[200px] 2xl:px-[320px]">
+          <div className="absolute right-3 lg:right-0 bottom-[20px] xl:px-[200px] 2xl:px-[320px]">
             <Image
                 width={0}
                 height={0}
                 sizes="100vw"
                 src='/images/circle-02.svg'
                 alt=""
-                className="h-[20px] w-auto"
+                className="h-[15px] lg:h-[20px] w-auto"
               />
           </div>
          
@@ -315,7 +315,7 @@ export default function Home() {
                 sizes="100vw"
                 src='/images/ethereum-01.svg'
                 alt=""
-                className="h-[20px] w-auto"
+                className="h-[15px] lg:h-[20px] w-auto"
               />
             </div>
             <div className="space-y-5 flex flex-col items-center justify-center">
@@ -432,7 +432,7 @@ export default function Home() {
               sizes="100vw"
               src='/images/x.svg'
               alt=""
-              className="h-[20px] w-auto"
+              className="h-[15px] lg:h-[20px] w-auto"
             />
           </div>
           <div className="w-full border rounded-[20px] flex flex-col items-center pt-10 pb-12">
@@ -457,7 +457,7 @@ export default function Home() {
               sizes="100vw"
               src='/images/bitcoin-01.svg'
               alt=""
-              className="h-[25px] w-auto"
+              className="h-[15px] lg:h-[25px] w-auto"
             />
           </div>
           <div className="absolute right-[40px] bottom-11 lg:bottom-12  xl:px-[250px] 2xl:px-[320px]">
@@ -467,7 +467,7 @@ export default function Home() {
               sizes="100vw"
               src='/images/ethereum-03.svg'
               alt=""
-              className="h-[30px] w-auto"
+              className="h-[15px] lg:h-[30px] w-auto"
             />
           </div>
         </div>
@@ -600,7 +600,7 @@ export default function Home() {
               sizes="100vw"
               src='/images/circle-01.svg'
               alt=""
-              className="h-[20px] w-auto"
+              className="h-[15px] lg:h-[20px] w-auto"
             />
           </div>
           <div className="absolute right-[10px] lg:right-[180px] top-[20px] lg:top-[80px] xl:px-[250px] 2xl:px-[320px]">
@@ -610,7 +610,7 @@ export default function Home() {
               sizes="100vw"
               src='/images/ethereum-03.svg'
               alt=""
-              className="h-[30px] w-auto"
+              className="h-[15px] lg:h-[30px] w-auto"
             />
           </div>
           <div className="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-wide flex flex-col items-center ">
@@ -630,7 +630,7 @@ export default function Home() {
               sizes="100vw"
               src='/images/bitcoin-01.svg'
               alt=""
-              className="h-[30px] lg:h-[40px] w-auto"
+              className="h-[15px] lg:h-[40px] w-auto"
             />
           </div>
           <div className="absolute  right-[20px] lg:right-[200px] lg:bottom-[130px] bottom-4  xl:px-[250px] 2xl:px-[320px]">
@@ -640,14 +640,14 @@ export default function Home() {
               sizes="100vw"
               src='/images/x.svg'
               alt=""
-              className="h-[20px] w-auto"
+              className="h-[15px] lg:h-[20px] w-auto"
             />
           </div>
         </div>
 
         {/* footer */}
-        <div className="xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[50px] pb-8 -mt-8">
-          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center 2xl:max-w-[980px] w-full pr-12">
+        <div className="xl:px-[250px] 2xl:px-[320px] px-5 flex flex-col items-center justify-center gap-y-[50px] pb-8 -mt-8">
+          <div className="flex flex-col lg:flex-row lg:justify-between gap-y-7 lg:items-center 2xl:max-w-[980px] w-full pr-12">
             <div className="flex flex-col gap-y-4">
               <div className="">
                 <Image
@@ -680,7 +680,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row lg:gap-x-[90px]">
+            <div className="flex flex-col lg:flex-row gap-y-4 lg:gap-x-[90px]">
               <div className="flex flex-col">
                 <p className="font-bold">Quick Link</p>
                 <div className="pt-4 text-secondary text-sm space-y-3">
@@ -701,7 +701,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex justify-between items-center w-full">
+          <div className="flex lg:flex-row flex-col gap-y-2 justify-between items-center w-full">
               <p className="text-xs text-secondary">Copyright © 2023 Nfthub All Rights Reserved.</p>
               <div className="flex gap-x-12 text-xs text-secondary">
                 <p>Privacy policy</p>

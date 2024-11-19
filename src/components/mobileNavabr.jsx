@@ -62,7 +62,7 @@ const MobileNavbar = () => {
     return (
         <>
             <SideBar isOpen={isOpen} setIsOpen={setIsOpen}/>
-            <div className="-translate-y-8 flex items-center px-6 justify-between xl:hidden">
+            <div className="-translate-y-8 flex items-center px-6 justify-between lg:hidden">
                 <div className="">
                     <Image
                         width={0}
