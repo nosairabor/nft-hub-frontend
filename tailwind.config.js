@@ -14,6 +14,7 @@ module.exports = {
       },
       backgroundImage:{
         "hero":"url('/images/hero-background.svg')",
+        "hero-mobile":"url('/images/hero-mobile-background.svg')",
         "minting":"url('/images/minting-bg.svg')",
       },
       keyframes: {

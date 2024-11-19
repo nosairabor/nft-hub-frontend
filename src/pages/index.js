@@ -9,6 +9,7 @@ import CarouselField from "@/components/carousel";
 import { artists, faqInfo, HowItWorks } from "@/data";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/accordion";
 import Link from "next/link";
+import MobileNavbar from "@/components/mobileNavabr";
 
 
 const geistSans = localFont({
@@ -100,25 +101,31 @@ export default function Home() {
 
   return (
     <div
-      className={`flex flex-col gap-y-[90px]`}
+      className={`flex flex-col gap-y-[75px] lg:gap-y-[90px]`}
     >
       
       {/* hero section */}
-        <div className="relative xl:px-[250px] 2xl:px-[320px]   bg-hero bg-cover bg-no-repeat h-auto lg:h-screen w-screen space-y-[60px] 2xl:space-y-[110px]">
+        <div className="relative xl:px-[250px] 2xl:px-[320px] bg-hero-mobile  lg:bg-hero bg-cover bg-no-repeat  lg:h-screen w-screen space-y-[60px] 2xl:space-y-[110px]">
+          <MobileNavbar/>
           <DesktopNavbar/>
+          
           <div className="flex justify-center ">
-            <div className="flex justify-between 2xl:max-w-[980px] pt-[140px] w-full">
+            <div className="flex flex-col items-center xl:items-start xl:flex-row xl:justify-between 2xl:max-w-[980px] xl:pt-[140px] w-full">
               <div className="space-y-8">
-                <div className="leading-[1.0] text-[56px] smallLaptopScreenText font-bold">
-                  <p className="">High Quality</p>
-                  <p className="">NFT Collection</p>
+                <div className="leading-[1.0] text-[38px] xl:text-[56px] smallLaptopScreenText font-bold">
+                  <p className="hidden xl:block">High Quality</p>
+                  <p className="xl:hidden text-center">High Quality NFT <br/>Collection</p>
+                  <p className="hidden xl:block">NFT Collection</p>
                 </div>
-                <p className="text-[#7B7583] text-[17px]">A 890 piece custom Nfthub's collection is<br/> joining the NFT space on Opensea.</p>
+                <p className="text-[#7B7583] text-[17px] text-center xl:text-start">A 890 piece custom Nfthub's collection is<br/> joining the NFT space on Opensea.</p>
+                <div className="flex justify-center xl:justify-start">
                 <div className="linearGradient cursor-pointer w-[200px] text-sm py-4 px-2 flex justify-center items-center gap-x-1 rounded-[30px] text-white font-bold">
                   <p>View in OPENSEA</p> 
                   <GoArrowUpRight className="text-xl"/>
                 </div>
-                <div className="flex items-center">
+                </div>
+                
+                <div className="flex items-center justify-center xl:justify-start">
                   <div className="">
                     <Image
                       width={0}
@@ -137,14 +144,14 @@ export default function Home() {
                   
                 </div>
               </div>
-              <div className="-translate-y-[65px]">
+              <div className="py-10 xl:py-0 xl:-translate-y-[65px]">
                 <Image
                   width={0}
                   height={0}
                   sizes="100vw"
                   src='/images/hero-illustration.svg'
                   alt=""
-                  className="h-[480px] w-auto smallLaptopScreenImage"
+                  className="xl:h-[480px] h-[300px] w-auto smallLaptopScreenImage"
                 />
               </div>
             </div>
@@ -164,7 +171,7 @@ export default function Home() {
         </div>
 
         {/* brands */}
-        <div className="flex justify-center items-center gap-x-8 -mt-[60px]">
+        <div className="hidden xl:flex justify-center items-center gap-x-8 xl:-mt-[60px]">
           {brands.map((items) => (
               <div className="" key={items.id}>
                 <Image
@@ -178,6 +185,25 @@ export default function Home() {
               </div>
           ))}
         </div>
+
+        {/* mobile brands */}
+        <div className="flex xl:hidden justify-center pl-5">
+          <div className="grid grid-cols-2 justify-center items-center gap-y-5 gap-x-8 xl:-mt-[60px]">
+            {brands.map((items) => (
+                <div className={`${items.id === brands.length ? "col-span-2 justify-self-center pt-2 -ml-3" :""}`} key={items.id}>
+                  <Image
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    src={items.src}
+                    alt=""
+                    className="h-[24px] w-auto"
+                  />
+                </div>
+            ))}
+          </div>
+        </div>
+
 
         {/* seperator 1 */}
         <div className="relative flex justify-center">
@@ -193,7 +219,7 @@ export default function Home() {
 
         {/* nfthub's collection */}
         <div className="xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center font-bold gap-y-[50px]">
-          <p className="text-5xl">Nfthub's <span className="linearGradientText">collection</span></p>
+          <p className="text-4xl xl:text-5xl text-center">Nfthub's <br className="block xl:hidden"/><span className="linearGradientText">collection</span></p>
           <CarouselField/>
           <div className="linearGradient  cursor-pointer w-[200px] text-sm py-4 px-2 flex justify-center items-center gap-x-1 rounded-[30px] text-white font-bold">
             <p>View collection</p> 
@@ -215,7 +241,7 @@ export default function Home() {
 
         {/* why choose us */}
         <div className="relative xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center font-bold gap-y-[70px]">
-          <p className="text-5xl">Why <span className="linearGradientText">choose us?</span></p>
+          <p className=" text-4xl xl:text-5xl">Why <span className="linearGradientText">choose us?</span></p>
           <div className="absolute left-[70px] top-[65px]  xl:px-[250px] 2xl:px-[320px]">
             <Image
               width={0}
@@ -226,9 +252,9 @@ export default function Home() {
               className="h-[15px] w-auto"
             />
           </div>
-          <div className="flex gap-x-6 choose-us">
+          <div className="flex xl:flex-row flex-col gap-x-6 choose-us gap-y-9 xl:gap-y-0">
             {chooseUs.map((item) => (
-              <div className={`${item.id % 2 === 0 ? 'mt-8': 'mt-0'} flex flex-col justify-center border-[1px] px-5 gap-y-4 h-[270px] w-[205px] rounded-[20px]`} key={item.id}>
+              <div className={`${item.id % 2 === 0 ? 'lg:mt-8': 'mt-0'} flex flex-col justify-center border-[1px] px-5 gap-y-4 h-[270px] max-w-[350px] xl:w-[205px] rounded-[20px]`} key={item.id}>
                 <div className="">
                   <Image
                     width={0}
@@ -281,7 +307,7 @@ export default function Home() {
         </div>
 
         {/* figures */}
-        <div className="relative flex items-center justify-center gap-x-10 xl:px-[250px] 2xl:px-[320px]">
+        <div className="relative flex flex-col lg:flex-row items-center justify-center gap-x-10 gap-y-10  xl:px-[250px] 2xl:px-[320px]">
             <div className="absolute -top-6 right-[220px] xl:px-[250px] 2xl:px-[320px]">
               <Image
                 width={0}
@@ -292,28 +318,28 @@ export default function Home() {
                 className="h-[20px] w-auto"
               />
             </div>
-            <div className="space-y-5 flex flex-col items-center">
+            <div className="space-y-5 flex flex-col items-center justify-center">
               <p className="text-[#0F051D] font-bold text-6xl">400k+</p>
               <p className="text-[#7B7583] text-sm">Wallets Connected</p>
             </div>
 
-            <div className="w-[1px] h-[80px] bg-[#e5e7eb]"></div>
+            <div className="hidden lg:block w-[1px] h-[80px] bg-[#e5e7eb]"></div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col items-center justify-center" >
               <p className="text-[#0F051D] font-bold text-6xl">20k+</p>
               <p className="text-[#7B7583] text-sm">Wallets Connected</p>
             </div>
 
-            <div className="w-[1px] h-[80px] bg-[#e5e7eb]"></div>
+            <div className="hidden lg:block w-[1px] h-[80px] bg-[#e5e7eb]"></div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col items-center justify-center">
               <p className="text-[#0F051D] font-bold text-6xl">230+</p>
               <p className="text-[#7B7583] text-sm">Creative artists</p>
             </div>
 
-            <div className="w-[1px] h-[80px] bg-[#e5e7eb]"></div>
+            <div className="hidden lg:block w-[1px] h-[80px] bg-[#e5e7eb]"></div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col items-center justify-center">
               <p className="text-[#0F051D] font-bold text-6xl">2.5x</p>
               <p className="text-[#7B7583] text-sm">Estimated value</p>
             </div>
@@ -345,9 +371,9 @@ export default function Home() {
         {/* How it works */}
         <div className="relative xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[70px]">
           <p className="text-5xl font-bold">How it <span className="linearGradientText">works!</span></p>
-          <div className="flex flex-col gap-y-[100px]">
+          <div className="flex flex-col gap-y-[70px] lg:gap-y-[100px]">
             {HowItWorks.map((item) => (
-              <div className={`flex justify-between ${item.id % 2 === 0 ? 'flex-row-reverse' : ''}`} key={item.id}>
+              <div className={`flex xl:flex-row flex-col justify-center items-center xl:items-start xl:justify-between ${item.id % 2 === 0 ? 'flex-row-reverse' : ''}`} key={item.id}>
                 <div className="">
                   <Image
                     width={0}
@@ -355,13 +381,13 @@ export default function Home() {
                     sizes="100vw"
                     src={item.imageSrc}
                     alt=""
-                    className="h-[400px] w-auto"
+                    className="h-[300px] xl:h-[400px] w-auto"
                   />
                 </div>
-                <div className="flex flex-col pt-6">
+                <div className="flex flex-col pt-6 items-center xl:items-start">
                   <p className="TBlinearGradientText text-[15px] font-bold">0{item.id}.</p>
-                  <p className="text-[44px] font-bold w-[350px] leading-[1.05] mt-2">{item.heading}.</p>
-                  <div className="mt-5 text-[#7B7583] font-light w-[400px] text-[15px] space-y-3">
+                  <p className="text-[36px] xl:text-[44px] font-bold w-[250px] xl:w-[350px] text-center xl:text-start leading-[1.05] mt-2">{item.heading}.</p>
+                  <div className="mt-5 text-[#7B7583] font-light px-2 text-center max-w-[340px] lg:text-start xl:w-[400px] text-[15px] space-y-3">
                     <p className="">{item.text1}</p>
                     <p className="">{item.text2}</p>
                   </div>
@@ -387,9 +413,9 @@ export default function Home() {
           />
         </div>
         
-        {/* contact us */}
-        <div className="relative xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[70px]">
-          <div className="absolute left-[100px] top-12 xl:px-[250px] 2xl:px-[320px]">
+        {/* contact us, never miss a drop */}
+        <div className="relative px-4 xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[70px]">
+          <div className="absolute left-[50px] lg:left-[100px] top-7 lg:top-12 xl:px-[250px] 2xl:px-[320px]">
             <Image
               width={0}
               height={0}
@@ -399,7 +425,7 @@ export default function Home() {
               className="h-[15px] w-auto"
             />
           </div>
-          <div className="absolute right-[140px] top-12 xl:px-[250px] 2xl:px-[320px]">
+          <div className="absolute right-[50px] lg:right-[140px] top-7 lg:top-12 xl:px-[250px] 2xl:px-[320px]">
             <Image
               width={0}
               height={0}
@@ -410,21 +436,21 @@ export default function Home() {
             />
           </div>
           <div className="w-full border rounded-[20px] flex flex-col items-center pt-10 pb-12">
-            <p className="text-5xl font-bold tracking-wide">Never <span className="linearGradientText">miss a drop!</span></p>
-            <p className="text-[#7B7583] text-sm pt-6">Subscribe to our super-rare and exclusive drops & collectibles.</p>
-            <div className="flex gap-x-2 pt-8">
+            <p className="xl:text-5xl text-4xl text-center xl:text-start font-bold tracking-wide">Never <span className="linearGradientText">miss a<br className="block lg:hidden"/> drop!</span></p>
+            <p className="text-[#7B7583] text-center lg:text-start xl:text-sm pt-6">Subscribe to our super-rare and<br className="block lg:hidden"/> exclusive drops & collectibles.</p>
+            <div className="flex lg:flex-row flex-col items-center gap-x-2 gap-y-4 pt-8">
               <input
                 type="text"
                 className="w-[280px] bg-[#f2f2f1] px-4 py-[10px] rounded-[50px] text-sm  text-[#7B7583]"
                 placeholder="Enter your email"
               />
-              <div className=""></div>
-              <button type="button" className="linearGradient cursor-pointer text-white font-bold  text-xs rounded-[50px] flex items-center px-6 py-[10px]">
+              
+              <button type="button" className="linearGradient cursor-pointer text-white font-bold  text-xs rounded-[50px] w-[150px] lg:w-[110px]  xl:w-full flex justify-center items-center px-6 py-[10px]">
                 Subscribe 
               </button>
             </div>
           </div>
-          <div className="absolute left-[140px] bottom-12 xl:px-[250px] 2xl:px-[320px]">
+          <div className="absolute left-[40px] lg:left-[140px] bottom-11 lg:bottom-12 xl:px-[250px] 2xl:px-[320px]">
             <Image
               width={0}
               height={0}
@@ -434,7 +460,7 @@ export default function Home() {
               className="h-[25px] w-auto"
             />
           </div>
-          <div className="absolute right-[70px] bottom-12  xl:px-[250px] 2xl:px-[320px]">
+          <div className="absolute right-[40px] bottom-11 lg:bottom-12  xl:px-[250px] 2xl:px-[320px]">
             <Image
               width={0}
               height={0}
@@ -459,11 +485,11 @@ export default function Home() {
         </div>
         
         {/* meet the artists */}
-        <div className="relative xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[70px]">
-          <p className="text-5xl font-bold tracking-wide">Meet <span className="linearGradientText">the artists</span></p>
-          <div className="flex justify-between w-full 2xl:max-w-[980px]">
+        <div className="relative xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[40px] lg:gap-y-[70px]">
+          <p className=" text-4xl lg:text-5xl font-bold tracking-wide">Meet <span className="linearGradientText">the artists</span></p>
+          <div className="grid grid-cols-2 gap-y-10 gap-x-5 w-full lg:grid-cols-4 2xl:max-w-[980px]">
             {artists.map((item) => (
-              <div className={`${item.id % 2 === 0 ? '-translate-y-7' : ''}`} key={item.id}>
+              <div className={`${item.id % 2 === 0 ? 'lg:-translate-y-7' : ''}`} key={item.id}>
                 <div className="flex flex-col ">
                   <Image
                     width={0}
@@ -529,13 +555,13 @@ export default function Home() {
         </div>
         
         {/* Accordion */}
-        <div className="-mt-5 xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[50px]">
-          <div className="text-5xl font-bold tracking-wide flex flex-col items-center">
+        <div className="-mt-5 xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[35px] xl:gap-y-[50px]">
+          <div className="text-4xl lg:text-5xl font-bold tracking-wide flex flex-col items-center">
             <p className="flex">Your questions,</p>
             <p className="linearGradientText">answered!</p>
           </div>
           <div className="">
-            <Accordion type="single" collapsible className="bg-white border rounded-lg px-5 lg:w-[500px]">
+            <Accordion type="single" collapsible className="bg-white border rounded-lg px-5 max-w-[340px]  lg:min-w-[500px]">
               {faqInfo.map((item) => (
                 <AccordionItem key={item.id} value={item.id} className={`${item.id === faqInfo.length  ? "border-0" : ""}`}>
                   <AccordionTrigger className="text-black font-bold">
@@ -567,7 +593,7 @@ export default function Home() {
         {/* let's start minting */}
         <div className="relative bg-minting bg-cover border-b bg-no-repeat h-[300px] xl:h-[470px]  w-screen flex flex-col justify-center items-center gap-y-5 -mt-12">
           {/* small icons */}
-          <div className="absolute left-[180px] top-[80px] xl:px-[250px] 2xl:px-[320px]">
+          <div className="absolute left-[10px] lg:left-[180px] top-[20px] lg:top-[80px] xl:px-[250px] 2xl:px-[320px]">
             <Image
               width={0}
               height={0}
@@ -577,7 +603,7 @@ export default function Home() {
               className="h-[20px] w-auto"
             />
           </div>
-          <div className="absolute right-[180px] top-[80px] xl:px-[250px] 2xl:px-[320px]">
+          <div className="absolute right-[10px] lg:right-[180px] top-[20px] lg:top-[80px] xl:px-[250px] 2xl:px-[320px]">
             <Image
               width={0}
               height={0}
@@ -587,27 +613,27 @@ export default function Home() {
               className="h-[30px] w-auto"
             />
           </div>
-          <div className="text-7xl font-bold tracking-wide flex flex-col items-center ">
+          <div className="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-wide flex flex-col items-center ">
             <p className="">Let's start</p>
             <p className="z-10 linearGradientText pb-1">minting</p>
           </div>
-          <p className="text-[#7B7583] ">Invest and manage all your NFTs at one place.</p>
+          <p className="text-[#7B7583] text-center lg:text-start">Invest and manage all your NFTs at one<br className="block md:hidden"/> place.</p>
           <div className="linearGradient mt-4 cursor-pointer w-[180px] text-sm py-4 px-2 flex justify-center items-center gap-x-1 rounded-[30px] text-white font-bold">
             <p>Get started</p> 
             <GoArrowUpRight className="text-xl"/>
           </div>
           {/* small icons */}
-          <div className="absolute left-[200px] bottom-[130px] xl:px-[250px] 2xl:px-[320px]">
+          <div className="absolute left-[20px] lg:left-[200px] bottom-4 lg:bottom-[130px] xl:px-[250px] 2xl:px-[320px]">
             <Image
               width={0}
               height={0}
               sizes="100vw"
               src='/images/bitcoin-01.svg'
               alt=""
-              className="h-[40px] w-auto"
+              className="h-[30px] lg:h-[40px] w-auto"
             />
           </div>
-          <div className="absolute right-[200px] bottom-[130px]  xl:px-[250px] 2xl:px-[320px]">
+          <div className="absolute  right-[20px] lg:right-[200px] lg:bottom-[130px] bottom-4  xl:px-[250px] 2xl:px-[320px]">
             <Image
               width={0}
               height={0}
@@ -621,7 +647,7 @@ export default function Home() {
 
         {/* footer */}
         <div className="xl:px-[250px] 2xl:px-[320px] flex flex-col items-center justify-center gap-y-[50px] pb-8 -mt-8">
-          <div className="flex justify-between items-center 2xl:max-w-[980px] w-full pr-12">
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center 2xl:max-w-[980px] w-full pr-12">
             <div className="flex flex-col gap-y-4">
               <div className="">
                 <Image
@@ -654,7 +680,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="flex gap-x-[90px]">
+            <div className="flex flex-col lg:flex-row lg:gap-x-[90px]">
               <div className="flex flex-col">
                 <p className="font-bold">Quick Link</p>
                 <div className="pt-4 text-secondary text-sm space-y-3">
