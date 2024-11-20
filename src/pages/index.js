@@ -474,7 +474,7 @@ export default function Home() {
                 placeholder="Enter your email"
               />
               
-              <button type="button" className="linearGradient cursor-pointer text-white font-bold  text-xs rounded-[50px] w-[150px] lg:w-[110px]  xl:w-full flex justify-center items-center px-6 py-[10px]">
+              <button type="button" className="linearGradient cursor-pointer text-white font-bold  text-xs rounded-[50px] w-[150px] lg:w-[110px]   flex justify-center items-center px-6 py-[10px]">
                 Subscribe 
               </button>
             </div>
