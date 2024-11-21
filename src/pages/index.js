@@ -133,7 +133,7 @@ export default function Home() {
     >
       
       {/* hero section */}
-        <div className="relative md:px-[100px] xl:px-[250px] 2xl:px-[320px] bg-hero-mobile  md:bg-hero bg-cover bg-no-repeat  xl:h-screen w-screen  2xl:space-y-[110px]">
+        <div className="relative md:px-[100px] lg:px-[250px] 2xl:px-[320px] bg-hero-mobile  md:bg-hero bg-cover bg-no-repeat  xl:h-screen w-screen  ">
           <MobileNavbar/>
           <DesktopNavbar/>
           

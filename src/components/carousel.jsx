@@ -79,7 +79,7 @@ const CarouselField = () => {
     ]
 
     return (
-        <div className="flex justify-center w-full md:w-[700px] xl:w-[1000px]">
+        <div className="flex justify-center w-full md:w-[800px]  xl:w-[1000px]">
             <Carousel responsive={responsive} className="pb-[60px] w-full" arrows={true} showDots={true} swipeable={true}  draggable={true} >
                 {imageCard.map((item)=> (
                     <div className="flex flex-col items-center" key={item.id}>

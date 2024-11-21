@@ -61,7 +61,7 @@ const links = [
 const DesktopNavbar = () => {
     return (
         <div className="hidden xl:flex justify-center ">
-            <div className={`${inter.className} w-full 2xl:max-w-[980px] flex justify-between items-center pt-5`}>
+            <div className={`${inter.className} w-full 2xl:max-w-[980px] flex justify-between items-center pt-10`}>
                 <div className="">
                     <Image
                         width={0}

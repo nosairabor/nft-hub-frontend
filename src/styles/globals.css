@@ -29,13 +29,13 @@
 
 @media (min-width: 1280px) and (max-width: 1350px) {
     .smallLaptopScreenText {
-      font-size: 48px;
+      font-size: 48px !important;
     }
     .smallLaptopScreenImage {
-        height: 370px
+        height: 370px !important;
     }
     .smallLaptopNavMargin {
-        margin-left: 0px;
+        margin-left: 0px !important;
     }
 }
 
