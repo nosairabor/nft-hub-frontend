@@ -59,21 +59,21 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex xl:flex-row flex-col gap-y-2 justify-between items-center w-full">
-              <p className="text-xs text-secondary">Copyright © 2023 Nfthub All Rights Reserved.</p>
-              <div className="flex gap-x-12 text-xs text-secondary">
-                <p>Privacy policy</p>
-                <div className="flex gap-x-6 items-center">
-                  <p>Terms of use</p>
-                  <div className="">
-                    <Image
-                      width={0} height={0} sizes="100vw" src='/icons/arrow-up.svg' alt="" className="h-[7px] w-auto"
-                    />
-                  </div>
-                   
+          <div className="2xl:max-w-[980px] flex xl:flex-row flex-col gap-y-2 justify-between items-center w-full">
+            <p className="text-xs text-secondary">Copyright © 2023 Nfthub All Rights Reserved.</p>
+            <div className="flex gap-x-12 text-xs text-secondary">
+              <p>Privacy policy</p>
+              <div className="flex gap-x-6 items-center">
+                <p>Terms of use</p>
+                <div className="">
+                  <Image
+                    width={0} height={0} sizes="100vw" src='/icons/arrow-up.svg' alt="" className="h-[7px] w-auto"
+                  />
                 </div>
-               
+                  
               </div>
+              
+            </div>
           </div>
           
         </div>
